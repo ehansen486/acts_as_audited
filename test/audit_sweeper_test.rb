@@ -15,7 +15,11 @@ private
   attr_accessor :current_user
 end
 AuditsController.view_paths = [File.dirname(__FILE__)]
-ActionController::Routing::Routes.draw {|m| m.connect ':controller/:action/:id' }
+begin
+  ActionController::Routing::Routes.draw {|m| m.connect ':controller/:action/:id' }
+rescue NameError => e
+  p e
+end
 
 class AuditsControllerTest < ActionController::TestCase
   should "audit user" do
