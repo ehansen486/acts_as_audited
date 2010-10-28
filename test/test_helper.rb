@@ -65,7 +65,7 @@ class Test::Unit::TestCase
   end
   
   def create_versions(n = 2)
-    returning User.create(:name => 'Foobar 1') do |u|
+    User.create(:name => 'Foobar 1').tap do |u|
       (n - 1).times do |i|
         u.update_attribute :name, "Foobar #{i + 2}"
       end
